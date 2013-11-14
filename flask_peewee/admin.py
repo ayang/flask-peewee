@@ -186,7 +186,7 @@ class ModelAdmin(object):
         return col in self.model._meta.fields
 
     def get_display_name(self):
-        return self.model.__name__
+        return getattr(self.model._meta, 'verbose_name', self.model.__name__)
 
     def get_admin_name(self):
         return slugify(self.model.__name__)
