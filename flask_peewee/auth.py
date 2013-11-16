@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import functools
 import os
 
@@ -26,8 +27,8 @@ current_dir = os.path.dirname(__file__)
 
 
 class LoginForm(Form):
-    username = TextField('Username', validators=[validators.Required()])
-    password = PasswordField('Password', validators=[validators.Required()])
+    username = TextField(u'用户名', validators=[validators.Required()])
+    password = PasswordField(u'密码', validators=[validators.Required()])
 
 
 class BaseUser(object):
