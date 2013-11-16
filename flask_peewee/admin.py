@@ -255,7 +255,7 @@ class ModelAdmin(object):
             form = Form(request.form, meta={'locales': ['zh_CN', 'zh']})
             if form.validate():
                 instance = self.save_model(instance, form, True)
-                flash('添加 %s 保存成功' % self.get_display_name(), 'success')
+                flash(u'添加 %s 保存成功' % self.get_display_name(), 'success')
                 return self.dispatch_save_redirect(instance)
         else:
             form = Form(meta={'locales': ['zh_CN', 'zh']})
@@ -279,7 +279,7 @@ class ModelAdmin(object):
             form = Form(request.form, obj=instance, meta={'locales': ['zh_CN', 'zh']})
             if form.validate():
                 self.save_model(instance, form, False)
-                flash('修改 %s 保存成功' % self.get_display_name(), 'success')
+                flash(u'修改 %s 保存成功' % self.get_display_name(), 'success')
                 return self.dispatch_save_redirect(instance)
         else:
             form = Form(obj=instance, meta={'locales': ['zh_CN', 'zh']})
@@ -323,7 +323,7 @@ class ModelAdmin(object):
             for obj in query:
                 obj.delete_instance(recursive=self.delete_recursive)
 
-            flash('成功删除 %s %s' % (count, self.get_display_name()), 'success')
+            flash(u'成功删除 %s %s' % (count, self.get_display_name()), 'success')
             return redirect(url_for(self.get_url_name('index')))
 
         return render_template(self.templates['delete'], **dict(
