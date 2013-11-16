@@ -4,10 +4,10 @@
 
 {% block extra_tabs %}
     <li class="dropdown" style="float:right">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">With selected... <span class="caret" /></a>
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">选择项... <span class="caret" /></a>
       <ul class="dropdown-menu pull-right">
-        <li><a href="#" onclick="Admin.index_submit('export');">Export</a></li>
-        <li><a href="#" onclick="Admin.index_submit('delete');">Delete</a></li>
+        <li><a href="#" onclick="Admin.index_submit('export');">导出</a></li>
+        <li><a href="#" onclick="Admin.index_submit('delete');">删除</a></li>
       </ul>
     </li>
     {% include "admin/includes/filter_dropdown.html" %}
@@ -54,8 +54,8 @@
         {% endif %}
         <td class="last links">
           <ul class="inline">
-            <li><a href="{{ url_for(model_admin.get_url_name('edit'), pk=object.get_id()) }}">Edit</a></li>
-            <li><a href="{{ url_for(model_admin.get_url_name('delete'), id=object.get_id()) }}">Delete</a></li>
+            <li><a href="{{ url_for(model_admin.get_url_name('edit'), pk=object.get_id()) }}">编辑</a></li>
+            <li><a href="{{ url_for(model_admin.get_url_name('delete'), id=object.get_id()) }}">删除</a></li>
           </ul>
         </td>
       </tr>

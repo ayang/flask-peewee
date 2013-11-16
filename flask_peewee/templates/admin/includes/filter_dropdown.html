@@ -5,7 +5,7 @@
         data-field="{{ field.name|apply_prefix(prefix, 'fv_') }}"
         data-select="{{ field.name|apply_prefix(prefix, 'fo_') }}"
         id="filter-{{ field.name|apply_prefix(prefix, 'fo_') }}"
-        href="#">{% if prefix %}{{ ' / '.join(prefix) }} / {% endif %}{{ field.name }}</a>
+        href="#">{% if prefix %}{{ ' / '.join(prefix) }} / {% endif %}{{ field.verbose_name or field.name }}</a>
     </li>
   {% endfor %}
   {% for child_prefix, child in node.children.items() %}
@@ -13,7 +13,7 @@
   {% endfor %}
 {% endmacro %}
     <li class="dropdown" style="float:right">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Add filter... <span class="caret" /></a>
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">过滤... <span class="caret" /></a>
       <ul class="dropdown-menu pull-right" id="filters">
         {{ list_fields(field_tree, []) }}
       </ul>

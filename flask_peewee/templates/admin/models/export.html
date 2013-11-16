@@ -2,7 +2,7 @@
 
 {% block breadcrumbs %}
  {{ super() }}
- <li><span class="divider">/</span> <a href=".">Export</a></li>
+ <li><span class="divider">/</span> <a href=".">导出</a></li>
 {% endblock %}
 
 {% block tab_export_class %}active{% endblock %}
@@ -15,7 +15,7 @@
   {% include "admin/includes/filter_widgets.html" %}
 
   <div class="well">
-    <h4 id="export-summary">Currently {{ query.count() }} records are scheduled for export <small><a href="#" onclick="$('#export-details').toggle();">details</a></small></h4>
+    <h4 id="export-summary">一共 {{ query.count() }} 将被导出 <small><a href="#" onclick="$('#export-details').toggle();">详情</a></small></h4>
     <div id="export-details" style="display:none;">
       <pre>SQL:
 {{ sql[0] }}
@@ -28,9 +28,9 @@ PARAMS:
   <form action="./?{{ request.query_string }}" class="form-horizontal" method="post">
     <fieldset>
       {% if csrf_token %}{# Support for flask-seasurf #}<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">{% endif %}
-      <legend>Select fields to export</legend>
+      <legend>选择要导出的字段</legend>
       <div class="control-group">
-        <label class="control-label">Fields on {{ model.__name__ }}</label>
+        <label class="control-label">{{ model.__name__ }} 的字段</label>
         <div class="controls">
           {% for field in model._meta.get_fields() %}
             <label class="checkbox">
@@ -43,7 +43,7 @@ PARAMS:
       {% for (model, path), fields in related_fields.items() %}
         <legend>Select related fields to export</legend>
         <div class="control-group">
-          <label class="control-label">Fields on {{ model.__name__ }}</label>
+          <label class="control-label">{{ model.__name__ }} 的字段</label>
           <div class="controls">
             {% for field in fields %}
               <label class="checkbox">
@@ -55,8 +55,8 @@ PARAMS:
       {% endfor %}
 
       <div class="form-actions">
-        <button class="btn btn-primary" type="submit">Export JSON</button>
-        <a class="btn" href="{{ url_for(model_admin.get_url_name('index')) }}?{{ request.query_string }}">Cancel</a>
+        <button class="btn btn-primary" type="submit">导出 JSON</button>
+        <a class="btn" href="{{ url_for(model_admin.get_url_name('index')) }}?{{ request.query_string }}">取消</a>
       </div>
     </fieldset>
   </form>

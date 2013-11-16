@@ -3,7 +3,7 @@
     <div class="modal hide" id="modal-{{ field_name }}">
       <div class="modal-header">
         <a class="close" data-dismiss="modal">x</a>
-        <h3>Select a {{ field_name }}</h3>
+        <h3>选择一个 {{ field_name }}</h3>
       </div>
       <div class="modal-body">
         <input class="fk-lookup-input" data-ajax-url="{{ url_for(model_admin.get_url_name('ajax_list')) }}?field={{ field_name }}" type="text" />
@@ -11,8 +11,8 @@
         </ul>
       </div>
       <div class="modal-footer">
-        <a class="btn disabled previous" href="#">Previous</a>
-        <a class="btn disabled next" href="#">Next</a>
+        <a class="btn disabled previous" href="#">向前</a>
+        <a class="btn disabled next" href="#">向后</a>
       </div>
     </div>
   {% endfor %}

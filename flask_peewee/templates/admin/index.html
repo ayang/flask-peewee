@@ -1,8 +1,8 @@
 {% extends "admin/base.html" %}
 
-{% block title %}Admin Dashboard{% endblock %}
+{% block title %}管理控制面板{% endblock %}
 
-{% block content_title %}Admin Dashboard{% endblock %}
+{% block content_title %}管理控制面板{% endblock %}
 
 {% block content %}
   {% if panels %}
@@ -16,8 +16,8 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th class="shrink model-name">Model name</th>
-        <th class="records">Records</th>
+        <th class="shrink model-name">模块名称</th>
+        <th class="records">记录数量</th>
         <th class="shrink controls"></th>
       </tr>
     </thead>
@@ -28,8 +28,8 @@
           <td><span>{{ iter_admin.get_query().count() }}</span></td>
           <td class="links">
             <ul class="inline">
-              <li><a href="{{ url_for(iter_admin.get_url_name('add')) }}">Add new</a></li>
-              <li><a href="{{ url_for(iter_admin.get_url_name('export')) }}">Export</a></li>
+              <li><a href="{{ url_for(iter_admin.get_url_name('add')) }}">添加</a></li>
+              <li><a href="{{ url_for(iter_admin.get_url_name('export')) }}">导出</a></li>
             </ul>
           </td>
         </tr>

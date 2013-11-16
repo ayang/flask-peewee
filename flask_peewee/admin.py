@@ -251,13 +251,13 @@ class ModelAdmin(object):
         instance = self.model()
 
         if request.method == 'POST':
-            form = Form(request.form)
+            form = Form(request.form, meta={'locales': ['zh_CN', 'zh']})
             if form.validate():
                 instance = self.save_model(instance, form, True)
                 flash('New %s saved successfully' % self.get_display_name(), 'success')
                 return self.dispatch_save_redirect(instance)
         else:
-            form = Form()
+            form = Form(meta={'locales': ['zh_CN', 'zh']})
 
         return render_template(self.templates['add'],
             model_admin=self,
@@ -275,13 +275,13 @@ class ModelAdmin(object):
         Form = self.get_edit_form(instance)
 
         if request.method == 'POST':
-            form = Form(request.form, obj=instance)
+            form = Form(request.form, obj=instance, meta={'locales': ['zh_CN', 'zh']})
             if form.validate():
                 self.save_model(instance, form, False)
                 flash('Changes to %s saved successfully' % self.get_display_name(), 'success')
                 return self.dispatch_save_redirect(instance)
         else:
-            form = Form(obj=instance)
+            form = Form(obj=instance, meta={'locales': ['zh_CN', 'zh']})
 
         return render_template(self.templates['edit'],
             model_admin=self,
