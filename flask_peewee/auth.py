@@ -154,7 +154,7 @@ class Auth(object):
         session['user_pk'] = user.get_id()
         session.permanent = True
         g.user = user
-        flash('登录成功，当前用户为 %s' % user, 'success')
+        flash(u'登录成功，当前用户为 %s' % user, 'success')
 
     def logout_user(self):
         if self.clear_session:
@@ -162,7 +162,7 @@ class Auth(object):
         else:
             session.pop('logged_in', None)
         g.user = None
-        flash('注销成功', 'success')
+        flash(u'注销成功', 'success')
 
     def get_logged_in_user(self):
         if session.get('logged_in'):
@@ -195,7 +195,7 @@ class Auth(object):
                         self.default_next_url
                     )
                 else:
-                    flash('用户名或者密码错误')
+                    flash(u'用户名或者密码错误')
         else:
             form = Form()
 
